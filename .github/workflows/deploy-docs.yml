@@ -2,9 +2,7 @@ name: Deploy DX-OS Docs to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
-      - feat/enterprise-operations-review
+    branches: [main]
     paths:
       - "docs/**"
       - "docs-site/**"
