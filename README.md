@@ -191,6 +191,29 @@ không phải tài khoản Keycloak.
 Các script kiểm tra từ cấu hình Keycloak, JWT, CRUD/workflow, ngân sách, Nextcloud đến quyền
 read-only và các card của Metabase.
 
+### Kiểm tra giống GitHub Actions trước khi push
+
+Workflow CI nằm tại `.github/workflows/ci.yml`, tự chạy khi push lên `main` hoặc
+`feat/enterprise-operations-review`, khi pull request nhắm vào `main`, và hỗ trợ chạy thủ công.
+
+```powershell
+# Chuẩn hóa định dạng trước, sau đó kiểm tra lại
+docker run --rm -v "${PWD}/backend:/src" -w /src golang:1.26.6-alpine sh -c 'find . -type f -name "*.go" -print0 | xargs -0 gofmt -w'
+npm --prefix frontend run format
+
+# Các gate chính
+npm --prefix frontend run format:check
+npm --prefix frontend test -- --watch=false
+npm --prefix frontend run build
+npm --prefix frontend audit --omit=dev --audit-level=high
+npm --prefix docs-site run typecheck
+npm --prefix docs-site run build
+npm --prefix docs-site run audit:ci
+```
+
+CI còn chạy `go vet`, `go test -race`, build backend và Spectral lint cho OpenAPI. Chi tiết và
+chính sách ngoại lệ audit có thời hạn xem tại [Chiến lược kiểm thử](docs/implementation/TESTING.md).
+
 ### 6. Mở ứng dụng
 
 | Thành phần    | Địa chỉ               | Ghi chú                                           |
@@ -356,7 +379,7 @@ Chi tiết thao tác cho từng role nằm trong [Hướng dẫn sử dụng](do
 
 ## Tài liệu
 
-- [Website tài liệu DX-OS](https://tungnguyen2k5vp.github.io/DX-OS/)
+- [Website tài liệu DX-OS](https://vanvuong2005827.github.io/DX-OS/)
 - [Hướng dẫn sử dụng và role](docs/USER_GUIDE.md)
 - [Chỉ mục tài liệu](docs/INDEX.md)
 - [Implementation Guide](docs/IMPLEMENTATION_GUIDE.md)

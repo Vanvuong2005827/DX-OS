@@ -18,9 +18,9 @@ phẩm độc lập. RAGFlow/Agent thuộc lộ trình tiếp theo và chưa đ�
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Người dùng nghiệp vụ    | [Hướng dẫn sử dụng và role](USER_GUIDE.md)                                                                                                                                                      |
 | Tất cả thành viên dự án | [Implementation Guide](IMPLEMENTATION_GUIDE.md), [Project Brief](PROJECT_BRIEF.md)                                                                                                              |
-| Backend Go              | [Backend Go](implementation/BACKEND_GO.md), [Database](implementation/DATABASE.md), [API](implementation/API.md)                                                                                |
+| Backend Go              | [Backend Go](implementation/BACKEND_GO.md), [Database](implementation/DATABASE.md), [API](implementation/API.md), [Trợ lý AI local](implementation/LOCAL_AI.md)                                |
 | Frontend Angular        | [Frontend Angular](implementation/FRONTEND_ANGULAR.md), [UI Design System](implementation/UI_DESIGN_SYSTEM.md), [Quy ước thuật ngữ tiếng Việt](implementation/VIETNAMESE_TERMINOLOGY.md), [API](implementation/API.md), [Xác thực và phân quyền](implementation/AUTHORIZATION.md) |
-| DevOps                  | [Local Development](implementation/LOCAL_DEVELOPMENT.md), [Deployment](implementation/DEPLOYMENT.md), [Operations](implementation/OPERATIONS.md)                                                |
+| DevOps                  | [Local Development](implementation/LOCAL_DEVELOPMENT.md), [Trợ lý AI local](implementation/LOCAL_AI.md), [Deployment](implementation/DEPLOYMENT.md), [Operations](implementation/OPERATIONS.md) |
 | QA                      | [Testing](implementation/TESTING.md), [Backlog](BACKLOG.md)                                                                                                                                     |
 | Kiến trúc/giảng viên    | [System Context](architecture/CONTEXT.md), thư mục [ADR](architecture/adr/)                                                                                                                     |
 
@@ -43,6 +43,7 @@ phẩm độc lập. RAGFlow/Agent thuộc lộ trình tiếp theo và chưa đ�
 15. [Procurement MVP Runbook](runbooks/PROCUREMENT_MVP.md) — CRUD, workflow hai vòng duyệt, audit và ngân sách.
 16. [Attachment Runbook](runbooks/ATTACHMENTS.md) — Nextcloud/WebDAV, policy, phân quyền và vận hành tài liệu.
 17. [Reporting Runbook](runbooks/REPORTING.md) — curated views, KPI, Metabase read-only, RBAC và đối soát số liệu.
+18. [Trợ lý AI local](implementation/LOCAL_AI.md) — Ollama, model Qwen, grounded retrieval, vận hành GPU/CPU và giới hạn hiện tại.
 
 ## Nguồn yêu cầu
 

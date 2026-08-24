@@ -19,14 +19,15 @@ export class App {
   readonly isNavigationOpen = signal(false);
   readonly navigationGroups = computed(() => navigationForRoles(this.auth.roles()));
   readonly primaryRoleLabel = computed(() => primaryRoleLabel(this.auth.roles()));
-  readonly userInitials = computed(() =>
-    this.auth
-      .username()
-      .split(/[._\-\s]+/)
-      .filter(Boolean)
-      .slice(0, 2)
-      .map((part) => part[0]?.toUpperCase())
-      .join('') || 'DX',
+  readonly userInitials = computed(
+    () =>
+      this.auth
+        .username()
+        .split(/[._\-\s]+/)
+        .filter(Boolean)
+        .slice(0, 2)
+        .map((part) => part[0]?.toUpperCase())
+        .join('') || 'DX',
   );
 
   constructor() {

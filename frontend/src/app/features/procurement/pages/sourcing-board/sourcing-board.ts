@@ -1,5 +1,12 @@
 import { DatePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, computed, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { HlmBadge } from '@spartan-ng/helm/badge';
@@ -87,7 +94,12 @@ export class SourcingBoardPage {
   }
 
   async selectQuote(item: SourcingCase, quoteId: string, quoteVersion: number): Promise<void> {
-    if (!confirm('Chọn báo giá này làm kết quả cuối cùng? Các báo giá khác sẽ được đánh dấu không được chọn.')) return;
+    if (
+      !confirm(
+        'Chọn báo giá này làm kết quả cuối cùng? Các báo giá khác sẽ được đánh dấu không được chọn.',
+      )
+    )
+      return;
     this.busy.set(true);
     this.error.set(null);
     try {
@@ -103,7 +115,9 @@ export class SourcingBoardPage {
       this.success.set('Đã chọn nhà cung cấp. Phiếu sẵn sàng để phát hành đơn hàng.');
       this.load(item.purchaseRequestId);
     } catch (error: unknown) {
-      this.error.set(problemMessage(error, 'Không chọn được báo giá. Dữ liệu có thể vừa thay đổi.'));
+      this.error.set(
+        problemMessage(error, 'Không chọn được báo giá. Dữ liệu có thể vừa thay đổi.'),
+      );
     } finally {
       this.busy.set(false);
     }
@@ -113,7 +127,10 @@ export class SourcingBoardPage {
     return `${new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 1 }).format(value)}/100`;
   }
 
-  orderDraftParams(item: SourcingCase, quote: SourcingCase['quotes'][number]): Record<string, string> {
+  orderDraftParams(
+    item: SourcingCase,
+    quote: SourcingCase['quotes'][number],
+  ): Record<string, string> {
     const noteParts = [
       `Tạo từ báo giá ${quote.quoteReference}.`,
       `Bảo hành ${quote.warrantyMonths} tháng.`,
@@ -138,7 +155,10 @@ export class SourcingBoardPage {
         next: ({ board, suppliers }) => {
           this.board.set(board);
           this.suppliers.set(suppliers.items.filter((item) => item.status === 'ACTIVE'));
-          if (reopenRequestId) this.selectedCase.set(board.items.find((item) => item.purchaseRequestId === reopenRequestId) || null);
+          if (reopenRequestId)
+            this.selectedCase.set(
+              board.items.find((item) => item.purchaseRequestId === reopenRequestId) || null,
+            );
           this.loading.set(false);
         },
         error: (error: unknown) => {

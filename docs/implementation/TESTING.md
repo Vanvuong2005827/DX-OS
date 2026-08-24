@@ -117,14 +117,22 @@ Con số phải được đo trên môi trường Demo/UAT và ghi hardware/data
 
 ## 9. CI gate
 
-- format/lint.
-- Go unit + race test cho package quan trọng.
-- Angular lint/test/build.
-- OpenAPI/event schema lint.
-- migration test.
-- dependency/security scan.
-- secret scan.
-- image build.
+- Workflow: `.github/workflows/ci.yml`.
+- Push được kiểm tra trên `main` và `feat/enterprise-operations-review`; pull request được kiểm tra khi nhắm vào `main`. Có thể chạy thủ công bằng `workflow_dispatch`.
+- Go backend: `gofmt`, `go vet`, unit/race test và build ba command `api`, `worker`, `migrate`.
+- Angular frontend: Prettier, unit test, production build và audit production dependencies ở mức `high`.
+- OpenAPI: Spectral lint cho `contracts/openapi/dx-os-v1.yaml`.
+- Docusaurus: typecheck, build/kiểm tra liên kết và dependency audit ở mức `high`.
+
+Hai advisory `image-size` gián tiếp từ Docusaurus được ghi rõ trong `docs-site/audit-ci.jsonc` vì chưa có bản vá npm có thể cài đặt. Ngoại lệ hết hạn ngày **2026-10-31**; advisory mới hoặc ngoại lệ quá hạn vẫn làm CI thất bại. Chỉ tài liệu và ảnh do repository kiểm soát được phép đi qua bước build này.
+
+Trước khi push, chạy các lệnh tương đương gate định dạng:
+
+```powershell
+docker run --rm -v "${PWD}/backend:/src" -w /src golang:1.26.6-alpine gofmt -l .
+npm --prefix frontend run format:check
+npm --prefix docs-site run audit:ci
+```
 
 E2E full chạy trên integration/nightly; smoke subset chạy khi deploy.
 

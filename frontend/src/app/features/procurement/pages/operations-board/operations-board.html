@@ -52,9 +52,16 @@
   }
 
   @if (selected(); as request) {
-    <section id="order-workspace" hlmCard class="mt-6 scroll-mt-40" aria-labelledby="order-workspace-heading">
+    <section
+      id="order-workspace"
+      hlmCard
+      class="mt-6 scroll-mt-40"
+      aria-labelledby="order-workspace-heading"
+    >
       <div hlmCardHeader class="border-b">
-        <h2 id="order-workspace-heading" hlmCardTitle>Tạo đơn hàng cho {{ request.requestCode }}</h2>
+        <h2 id="order-workspace-heading" hlmCardTitle>
+          Tạo đơn hàng cho {{ request.requestCode }}
+        </h2>
         <p hlmCardDescription>
           {{ request.requestTitle }} · {{ request.totalAmount | dxMoney: request.currency }}
         </p>
@@ -113,7 +120,12 @@
   }
 
   @if (receiptOrder(); as order) {
-    <section id="receipt-workspace" hlmCard class="mt-6 scroll-mt-40" aria-labelledby="receipt-form-heading">
+    <section
+      id="receipt-workspace"
+      hlmCard
+      class="mt-6 scroll-mt-40"
+      aria-labelledby="receipt-form-heading"
+    >
       <div hlmCardHeader class="border-b">
         <h2 hlmCardTitle id="receipt-form-heading">Biên bản giao nhận {{ order.orderCode }}</h2>
         <p hlmCardDescription>
@@ -239,7 +251,12 @@
   }
 
   @if (managingOrder(); as order) {
-    <section id="manage-order-workspace" hlmCard class="mt-6 scroll-mt-40" aria-labelledby="manage-order-heading">
+    <section
+      id="manage-order-workspace"
+      hlmCard
+      class="mt-6 scroll-mt-40"
+      aria-labelledby="manage-order-heading"
+    >
       <div hlmCardHeader class="border-b">
         <h2 hlmCardTitle id="manage-order-heading">Quản lý đơn {{ order.orderCode }}</h2>
         <p hlmCardDescription>

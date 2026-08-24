@@ -160,7 +160,9 @@ export class Dashboard {
           this.loading.set(false);
         },
         error: () => {
-          this.error.set('Không kết nối được dịch vụ xử lý dữ liệu. Hãy kiểm tra hệ thống và đăng nhập lại.');
+          this.error.set(
+            'Không kết nối được dịch vụ xử lý dữ liệu. Hãy kiểm tra hệ thống và đăng nhập lại.',
+          );
           this.loading.set(false);
         },
       });

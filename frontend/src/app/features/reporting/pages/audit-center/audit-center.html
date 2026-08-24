@@ -161,7 +161,8 @@
       <div hlmCardHeader class="border-b">
         <h2 hlmCardTitle>Xuất gói bằng chứng</h2>
         <p hlmCardDescription>
-          Tệp dữ liệu bao gồm phiếu, lịch sử xử lý, tệp đính kèm, giao nhận, hóa đơn và nhật ký kiểm toán.
+          Tệp dữ liệu bao gồm phiếu, lịch sử xử lý, tệp đính kèm, giao nhận, hóa đơn và nhật ký kiểm
+          toán.
         </p>
       </div>
       <div hlmCardContent class="flex flex-col gap-3 sm:flex-row">
@@ -265,7 +266,12 @@
                 <th class="px-3 py-3">Hành động</th>
                 <th class="px-3 py-3">Người thực hiện</th>
                 <th class="px-3 py-3">Thay đổi trạng thái</th>
-                <th class="px-3 py-3" title="Mã dùng để nối các bản ghi của cùng một thao tác khi cần hỗ trợ kỹ thuật.">Mã theo dõi thao tác</th>
+                <th
+                  class="px-3 py-3"
+                  title="Mã dùng để nối các bản ghi của cùng một thao tác khi cần hỗ trợ kỹ thuật."
+                >
+                  Mã theo dõi thao tác
+                </th>
               </tr>
             </thead>
             <tbody class="divide-y divide-border">
@@ -291,7 +297,9 @@
                     </p>
                   </td>
                   <td class="px-3 py-4">
-                    <span class="text-xs">{{ statusChangeLabel(event.fromStatus, event.toStatus) }}</span>
+                    <span class="text-xs">{{
+                      statusChangeLabel(event.fromStatus, event.toStatus)
+                    }}</span>
                   </td>
                   <td class="px-3 py-4">
                     <code

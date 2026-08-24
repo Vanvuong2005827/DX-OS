@@ -46,7 +46,12 @@
   }
 
   @if (selected(); as item) {
-    <section id="invoice-workspace" hlmCard class="mt-6 scroll-mt-40" aria-labelledby="invoice-form-heading">
+    <section
+      id="invoice-workspace"
+      hlmCard
+      class="mt-6 scroll-mt-40"
+      aria-labelledby="invoice-form-heading"
+    >
       <div hlmCardHeader class="border-b">
         <h2 id="invoice-form-heading" hlmCardTitle>
           @if (mode() === 'PAY') {

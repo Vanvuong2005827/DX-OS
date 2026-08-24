@@ -19,7 +19,8 @@ export function revealWorkspace(targetId: string, focusSelector = '[data-autofoc
       const workspace = document.getElementById(targetId);
       if (!workspace) return;
 
-      const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+      const reducedMotion =
+        window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
       const stickyHeaderOffset = 144;
       const safeViewportBottom = window.innerHeight - 24;
       const bounds = workspace.getBoundingClientRect();

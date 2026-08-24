@@ -110,7 +110,9 @@ export class ApprovalGovernancePage {
       this.success.set(message);
       this.load();
     } catch (error: unknown) {
-      this.error.set(problemMessage(error, 'Không thực hiện được thao tác. Hãy kiểm tra dữ liệu và thử lại.'));
+      this.error.set(
+        problemMessage(error, 'Không thực hiện được thao tác. Hãy kiểm tra dữ liệu và thử lại.'),
+      );
     } finally {
       this.busy.set(false);
     }

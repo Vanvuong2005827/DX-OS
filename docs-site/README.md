@@ -3,7 +3,7 @@
 Website tài liệu dùng Docusaurus 3. Nội dung được đọc trực tiếp từ thư mục ../docs để tránh tạo hai
 nguồn tài liệu khác nhau.
 
-Website production: https://tungnguyen2k5vp.github.io/DX-OS/
+Website production: https://vanvuong2005827.github.io/DX-OS/
 
 ## Chạy local
 
@@ -47,16 +47,16 @@ Smoke test từ repository root:
 ## Triển khai GitHub Pages
 
 Workflow `.github/workflows/deploy-docs.yml` tự động build và deploy khi nội dung trong `docs/` hoặc
-`docs-site/` được push lên nhánh `main`. Trong lần thiết lập đầu tiên, vào **Settings → Pages → Build
+`docs-site/` được push lên nhánh `main` hoặc `feat/enterprise-operations-review`. Trong lần thiết lập đầu tiên, vào **Settings → Pages → Build
 and deployment → Source**, chọn **GitHub Actions**. Sau đó có thể chạy workflow thủ công tại tab
 **Actions → Deploy DX-OS Docs to GitHub Pages** hoặc push một thay đổi tài liệu mới.
 
 Build production tại máy local (PowerShell):
 
 ```powershell
-$env:DOCS_SITE_URL = 'https://tungnguyen2k5vp.github.io'
+$env:DOCS_SITE_URL = 'https://vanvuong2005827.github.io'
 $env:DOCS_BASE_URL = '/DX-OS/'
-$env:DOCS_APP_URL = 'https://github.com/tungnguyen2k5vp/DX-OS'
+$env:DOCS_APP_URL = 'https://github.com/Vanvuong2005827/DX-OS'
 $env:DOCS_APP_LABEL = 'Mã nguồn'
 npm run build
 ```

@@ -100,7 +100,9 @@ export const canAccessAIGuard: CanActivateFn = () => {
 
 export const canAccessApprovalGovernanceGuard: CanActivateFn = () => {
   const roles = inject(AuthService).roles();
-  if (['department_manager', 'finance', 'auditor', 'dx_admin'].some((role) => roles.includes(role))) {
+  if (
+    ['department_manager', 'finance', 'auditor', 'dx_admin'].some((role) => roles.includes(role))
+  ) {
     return true;
   }
   return inject(Router).createUrlTree(['/dashboard']);

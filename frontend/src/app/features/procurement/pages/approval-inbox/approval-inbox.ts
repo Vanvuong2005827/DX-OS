@@ -97,21 +97,28 @@ export class ApprovalInbox {
     this.error.set(null);
     this.batchMessage.set(null);
     const results = await Promise.allSettled(
-      selected.map((request) =>
-        new Promise<void>((resolve, reject) => {
-          this.procurement
-            .transition(
-              request.id,
-              { action: 'APPROVE', expectedVersion: request.version, comment: 'Phê duyệt hàng loạt sau khi đã kiểm tra danh sách' },
-              crypto.randomUUID(),
-            )
-            .subscribe({ next: () => resolve(), error: reject });
-        }),
+      selected.map(
+        (request) =>
+          new Promise<void>((resolve, reject) => {
+            this.procurement
+              .transition(
+                request.id,
+                {
+                  action: 'APPROVE',
+                  expectedVersion: request.version,
+                  comment: 'Phê duyệt hàng loạt sau khi đã kiểm tra danh sách',
+                },
+                crypto.randomUUID(),
+              )
+              .subscribe({ next: () => resolve(), error: reject });
+          }),
       ),
     );
     const succeeded = results.filter((item) => item.status === 'fulfilled').length;
     const failed = results.length - succeeded;
-    this.batchMessage.set(`Đã phê duyệt ${succeeded}/${results.length} phiếu.${failed ? ` ${failed} phiếu cần mở lại để kiểm tra.` : ''}`);
+    this.batchMessage.set(
+      `Đã phê duyệt ${succeeded}/${results.length} phiếu.${failed ? ` ${failed} phiếu cần mở lại để kiểm tra.` : ''}`,
+    );
     this.selectedIds.set(new Set());
     this.batchBusy.set(false);
     this.load();

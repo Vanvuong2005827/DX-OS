@@ -419,7 +419,10 @@ export class ProcurementService {
     return this.http.get<SourcingBoard>(`${this.config.apiBaseUrl}/api/v1/sourcing`);
   }
 
-  createSupplierQuote(input: SupplierQuoteInput, idempotencyKey: string): Observable<SupplierQuote> {
+  createSupplierQuote(
+    input: SupplierQuoteInput,
+    idempotencyKey: string,
+  ): Observable<SupplierQuote> {
     return this.http.post<SupplierQuote>(
       `${this.config.apiBaseUrl}/api/v1/sourcing/quotes`,
       input,

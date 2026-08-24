@@ -3,7 +3,9 @@
     class="flex flex-col gap-4 border-b border-border pb-7 sm:flex-row sm:items-end sm:justify-between"
   >
     <div>
-      <p class="flex items-center gap-2 text-sm font-medium text-primary"><app-icon name="approval" size="sm" /> {{ reviewRoleLabel() }}</p>
+      <p class="flex items-center gap-2 text-sm font-medium text-primary">
+        <app-icon name="approval" size="sm" /> {{ reviewRoleLabel() }}
+      </p>
       <h1 id="approval-inbox-heading" class="text-3xl font-semibold tracking-tight sm:text-4xl">
         Chờ tôi phê duyệt
       </h1>
@@ -11,7 +13,9 @@
         {{ scopeDescription() }} Mở một phiếu để phê duyệt, từ chối hoặc yêu cầu chỉnh sửa.
       </p>
     </div>
-    <a hlmBtn variant="outline" routerLink="/purchase-requests"><app-icon name="requests" size="sm" /> Tất cả phiếu</a>
+    <a hlmBtn variant="outline" routerLink="/purchase-requests"
+      ><app-icon name="requests" size="sm" /> Tất cả phiếu</a
+    >
   </header>
 
   <section hlmCard class="mt-7">
@@ -21,7 +25,12 @@
     </div>
     <div hlmCardContent>
       @if (batchMessage()) {
-        <p role="status" class="mb-4 rounded-lg border border-primary/20 bg-primary/5 p-3 text-sm text-primary">{{ batchMessage() }}</p>
+        <p
+          role="status"
+          class="mb-4 rounded-lg border border-primary/20 bg-primary/5 p-3 text-sm text-primary"
+        >
+          {{ batchMessage() }}
+        </p>
       }
       @if (error()) {
         <div
@@ -44,7 +53,11 @@
           class="grid min-h-72 place-items-center rounded-lg border border-dashed border-border p-8"
         >
           <div class="max-w-md text-center">
-            <span class="mx-auto grid size-12 place-items-center rounded-full bg-primary/5 text-primary" aria-hidden="true"><app-icon name="approval" size="lg" /></span>
+            <span
+              class="mx-auto grid size-12 place-items-center rounded-full bg-primary/5 text-primary"
+              aria-hidden="true"
+              ><app-icon name="approval" size="lg"
+            /></span>
             <h2 class="mt-4 text-lg font-semibold">Không còn phiếu chờ xử lý</h2>
             <p class="mt-2 text-sm leading-6 text-muted-foreground">
               Hàng đợi của bạn đang trống. Phiếu mới sẽ xuất hiện khi tới đúng vòng phê duyệt.
@@ -52,9 +65,19 @@
           </div>
         </div>
       } @else {
-        <div class="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-muted/60 p-3">
-          <p class="text-sm text-muted-foreground">Chọn các phiếu đã kiểm tra để phê duyệt cùng lúc.</p>
-          <button hlmBtn type="button" size="sm" [disabled]="selectedCount() === 0 || batchBusy()" (click)="approveSelected()">
+        <div
+          class="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-muted/60 p-3"
+        >
+          <p class="text-sm text-muted-foreground">
+            Chọn các phiếu đã kiểm tra để phê duyệt cùng lúc.
+          </p>
+          <button
+            hlmBtn
+            type="button"
+            size="sm"
+            [disabled]="selectedCount() === 0 || batchBusy()"
+            (click)="approveSelected()"
+          >
             {{ batchBusy() ? 'Đang phê duyệt…' : 'Phê duyệt đã chọn (' + selectedCount() + ')' }}
           </button>
         </div>
@@ -64,7 +87,14 @@
               class="border-b border-border text-xs uppercase tracking-wide text-muted-foreground"
             >
               <tr>
-                <th class="w-10 px-3 py-3"><input type="checkbox" aria-label="Chọn tất cả phiếu trên trang" [checked]="selectedCount() === items().length" (change)="toggleAll($any($event.target).checked)" /></th>
+                <th class="w-10 px-3 py-3">
+                  <input
+                    type="checkbox"
+                    aria-label="Chọn tất cả phiếu trên trang"
+                    [checked]="selectedCount() === items().length"
+                    (change)="toggleAll($any($event.target).checked)"
+                  />
+                </th>
                 <th class="px-3 py-3 font-medium">Mã phiếu</th>
                 <th class="px-3 py-3 font-medium">Nội dung</th>
                 <th class="px-3 py-3 font-medium">Người yêu cầu</th>
@@ -76,7 +106,14 @@
             <tbody class="divide-y divide-border">
               @for (request of items(); track request.id) {
                 <tr class="transition-colors hover:bg-muted/50">
-                  <td class="px-3 py-4"><input type="checkbox" [attr.aria-label]="'Chọn phiếu ' + request.requestCode" [checked]="selectedIds().has(request.id)" (change)="toggleSelection(request.id, $any($event.target).checked)" /></td>
+                  <td class="px-3 py-4">
+                    <input
+                      type="checkbox"
+                      [attr.aria-label]="'Chọn phiếu ' + request.requestCode"
+                      [checked]="selectedIds().has(request.id)"
+                      (change)="toggleSelection(request.id, $any($event.target).checked)"
+                    />
+                  </td>
                   <td class="px-3 py-4 font-mono text-xs font-semibold text-primary">
                     {{ request.requestCode }}
                   </td>

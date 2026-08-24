@@ -1,20 +1,32 @@
 <section aria-labelledby="dashboard-heading">
   <header class="dashboard-hero border-b border-border">
     <div class="dashboard-hero__copy">
-      <p class="dashboard-hero__eyebrow"><app-icon name="home" size="sm" /> Không gian vận hành theo vai trò</p>
-      <h1 id="dashboard-heading" class="text-3xl font-semibold tracking-tight sm:text-4xl">{{ workspace().name }}</h1>
-      <p class="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">{{ workspace().mission }}</p>
+      <p class="dashboard-hero__eyebrow">
+        <app-icon name="home" size="sm" /> Không gian vận hành theo vai trò
+      </p>
+      <h1 id="dashboard-heading" class="text-3xl font-semibold tracking-tight sm:text-4xl">
+        {{ workspace().name }}
+      </h1>
+      <p class="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
+        {{ workspace().mission }}
+      </p>
       <div class="mt-6 flex flex-wrap gap-2">
-      @if (canCreate()) {
-        <a hlmBtn routerLink="/purchase-requests/new">Tạo phiếu mới</a>
-      }
-      @if (canBrowseRequests()) {
-        <a hlmBtn variant="outline" routerLink="/purchase-requests">Mở danh sách phiếu</a>
-      }
+        @if (canCreate()) {
+          <a hlmBtn routerLink="/purchase-requests/new">Tạo phiếu mới</a>
+        }
+        @if (canBrowseRequests()) {
+          <a hlmBtn variant="outline" routerLink="/purchase-requests">Mở danh sách phiếu</a>
+        }
       </div>
     </div>
     <figure class="dashboard-hero__art" aria-label="Minh hoạ quy trình mua sắm và giao nhận">
-      <img src="/assets/illustrations/operations-workflow.png" alt="Quy trình phiếu, ngân sách và giao nhận được kết nối" width="1536" height="1024" fetchpriority="high" />
+      <img
+        src="/assets/illustrations/operations-workflow.png"
+        alt="Quy trình phiếu, ngân sách và giao nhận được kết nối"
+        width="1536"
+        height="1024"
+        fetchpriority="high"
+      />
     </figure>
   </header>
 
@@ -27,7 +39,10 @@
   <div class="mt-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
     <article hlmCard size="sm" class="metric-card metric-card--primary">
       <div hlmCardHeader>
-        <div class="metric-card__heading"><p hlmCardDescription>Phiếu trong phạm vi</p><span class="metric-card__icon"><app-icon name="requests" /></span></div>
+        <div class="metric-card__heading">
+          <p hlmCardDescription>Phiếu trong phạm vi</p>
+          <span class="metric-card__icon"><app-icon name="requests" /></span>
+        </div>
         <p hlmCardTitle class="text-3xl tabular-nums">
           {{ metricsLoading() ? '…' : (requestTotal() ?? '—') }}
         </p>
@@ -43,7 +58,10 @@
 
     <article hlmCard size="sm" class="metric-card metric-card--amber">
       <div hlmCardHeader>
-        <div class="metric-card__heading"><p hlmCardDescription>{{ actionLabel() }}</p><span class="metric-card__icon"><app-icon name="tasks" /></span></div>
+        <div class="metric-card__heading">
+          <p hlmCardDescription>{{ actionLabel() }}</p>
+          <span class="metric-card__icon"><app-icon name="tasks" /></span>
+        </div>
         <p hlmCardTitle class="text-3xl tabular-nums">
           {{ metricsLoading() ? '…' : (actionRequired() ?? '—') }}
         </p>
@@ -65,7 +83,10 @@
 
     <article hlmCard size="sm" class="metric-card metric-card--success">
       <div hlmCardHeader>
-        <div class="metric-card__heading"><p hlmCardDescription>Đã duyệt{{ canAccessReports() ? ' (30 ngày)' : '' }}</p><span class="metric-card__icon"><app-icon name="approval" /></span></div>
+        <div class="metric-card__heading">
+          <p hlmCardDescription>Đã duyệt{{ canAccessReports() ? ' (30 ngày)' : '' }}</p>
+          <span class="metric-card__icon"><app-icon name="approval" /></span>
+        </div>
         <p hlmCardTitle class="text-3xl tabular-nums">
           {{ metricsLoading() ? '…' : (completedValue() ?? '—') }}
         </p>
@@ -83,7 +104,10 @@
 
     <article hlmCard size="sm" class="metric-card metric-card--attention">
       <div hlmCardHeader>
-        <div class="metric-card__heading"><p hlmCardDescription>{{ attentionLabel() }}</p><span class="metric-card__icon"><app-icon name="budget" /></span></div>
+        <div class="metric-card__heading">
+          <p hlmCardDescription>{{ attentionLabel() }}</p>
+          <span class="metric-card__icon"><app-icon name="budget" /></span>
+        </div>
         <p
           hlmCardTitle
           class="text-3xl tabular-nums"
@@ -151,7 +175,7 @@
     <section hlmCard>
       <div hlmCardHeader class="border-b">
         <h2 hlmCardTitle>Danh tính hiện tại</h2>
-          <p hlmCardDescription>Dữ liệu được hệ thống đọc từ phiên đăng nhập.</p>
+        <p hlmCardDescription>Dữ liệu được hệ thống đọc từ phiên đăng nhập.</p>
       </div>
       <div hlmCardContent class="pt-6">
         @if (loading()) {

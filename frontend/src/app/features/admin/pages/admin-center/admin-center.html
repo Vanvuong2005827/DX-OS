@@ -28,7 +28,12 @@
       <section hlmCard>
         <div hlmCardHeader>
           <p hlmCardDescription>Xung đột phân quyền</p>
-          <p class="text-3xl font-semibold" [class.text-destructive]="current.overview.roleConflictUsers > 0">{{ current.overview.roleConflictUsers }}</p>
+          <p
+            class="text-3xl font-semibold"
+            [class.text-destructive]="current.overview.roleConflictUsers > 0"
+          >
+            {{ current.overview.roleConflictUsers }}
+          </p>
         </div>
       </section>
       <section hlmCard>
@@ -91,8 +96,12 @@
                   <td class="p-3">
                     <strong>{{ item.username }}</strong>
                     <p class="text-xs text-muted-foreground">{{ item.email || 'Chưa có email' }}</p>
-                    @if (item.roles.length) { <p class="mt-1 text-xs text-muted-foreground">{{ item.roles.join(' · ') }}</p> }
-                    @for (conflict of item.roleConflicts; track conflict) { <p class="mt-1 text-xs font-medium text-destructive">⚠ {{ conflict }}</p> }
+                    @if (item.roles.length) {
+                      <p class="mt-1 text-xs text-muted-foreground">{{ item.roles.join(' · ') }}</p>
+                    }
+                    @for (conflict of item.roleConflicts; track conflict) {
+                      <p class="mt-1 text-xs font-medium text-destructive">⚠ {{ conflict }}</p>
+                    }
                   </td>
                   <td class="p-3">{{ item.displayName }}</td>
                   <td class="p-3">{{ item.departmentName }}</td>
@@ -118,9 +127,16 @@
           </table>
         </div>
       </section>
-      <section id="user-editor-workspace" hlmCard class="scroll-mt-40" aria-labelledby="user-editor-heading">
+      <section
+        id="user-editor-workspace"
+        hlmCard
+        class="scroll-mt-40"
+        aria-labelledby="user-editor-heading"
+      >
         <div hlmCardHeader class="border-b">
-          <h2 id="user-editor-heading" hlmCardTitle>{{ editingUser() ? 'Cập nhật người dùng' : 'Chọn một người dùng' }}</h2>
+          <h2 id="user-editor-heading" hlmCardTitle>
+            {{ editingUser() ? 'Cập nhật người dùng' : 'Chọn một người dùng' }}
+          </h2>
         </div>
         <div hlmCardContent class="grid gap-4">
           @if (editingUser()) {

@@ -13,7 +13,7 @@ const config: Config = {
   favicon: "img/favicon.svg",
   url: siteUrl,
   baseUrl,
-  organizationName: "tungnguyen2k5vp",
+  organizationName: "Vanvuong2005827",
   projectName: "DX-OS",
   trailingSlash: false,
   onBrokenLinks: "throw",
@@ -86,7 +86,7 @@ const config: Config = {
     announcementBar: {
       id: "mvp-status",
       content:
-        "DX-OS hiện đã có Procurement, Budget, Attachments và Reporting. RAG/Agent đang ở lộ trình tiếp theo.",
+        "DX-OS đã có Procurement, Budget, Attachments, Reporting và trợ lý grounded chạy local. Semantic RAG/Agent đang ở lộ trình tiếp theo.",
       backgroundColor: "#ccfbf1",
       textColor: "#134e4a",
       isCloseable: true,

@@ -5,8 +5,8 @@
       Chính sách vận hành
     </h1>
     <p class="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground">
-      Cấu hình thời hạn xử lý và yêu cầu chứng từ mà không cần sửa mã hệ thống. Thay đổi sử dụng phiên bản chống ghi đè
-      và được lưu vào trung tâm kiểm toán.
+      Cấu hình thời hạn xử lý và yêu cầu chứng từ mà không cần sửa mã hệ thống. Thay đổi sử dụng
+      phiên bản chống ghi đè và được lưu vào trung tâm kiểm toán.
     </p>
   </header>
 
@@ -16,8 +16,8 @@
         current.canManage ? 'Chế độ quản trị' : 'Chỉ đọc cho kiểm toán'
       }}</span>
       <span class="text-sm text-muted-foreground"
-        >{{ current.slaPolicies.length }} thời hạn xử lý · {{ current.attachmentRules.length }} quy tắc chứng
-        từ</span
+        >{{ current.slaPolicies.length }} thời hạn xử lý · {{ current.attachmentRules.length }} quy
+        tắc chứng từ</span
       >
     </div>
   }
@@ -39,9 +39,16 @@
   }
 
   @if (selectedSLA(); as policy) {
-    <section id="sla-policy-workspace" hlmCard class="mt-6 scroll-mt-40" aria-labelledby="sla-policy-workspace-heading">
+    <section
+      id="sla-policy-workspace"
+      hlmCard
+      class="mt-6 scroll-mt-40"
+      aria-labelledby="sla-policy-workspace-heading"
+    >
       <div hlmCardHeader class="border-b">
-        <h2 id="sla-policy-workspace-heading" hlmCardTitle>Sửa thời hạn xử lý: {{ processLabel(policy.processName) }}</h2>
+        <h2 id="sla-policy-workspace-heading" hlmCardTitle>
+          Sửa thời hạn xử lý: {{ processLabel(policy.processName) }}
+        </h2>
         <p hlmCardDescription>Áp dụng cho các lần gửi phiếu mới sau khi lưu.</p>
       </div>
       <div hlmCardContent class="grid gap-4 sm:grid-cols-2">
@@ -56,16 +63,24 @@
             (input)="targetHours.set(+$any($event.target).value)"
         /></label>
         <div class="flex items-end gap-2">
-          <button hlmBtn type="button" [disabled]="saving()" (click)="saveSLA()">Lưu thời hạn</button
+          <button hlmBtn type="button" [disabled]="saving()" (click)="saveSLA()">
+            Lưu thời hạn</button
           ><button hlmBtn type="button" variant="outline" (click)="cancel()">Hủy</button>
         </div>
       </div>
     </section>
   }
   @if (selectedAttachment(); as policy) {
-    <section id="attachment-policy-workspace" hlmCard class="mt-6 scroll-mt-40" aria-labelledby="attachment-policy-workspace-heading">
+    <section
+      id="attachment-policy-workspace"
+      hlmCard
+      class="mt-6 scroll-mt-40"
+      aria-labelledby="attachment-policy-workspace-heading"
+    >
       <div hlmCardHeader class="border-b">
-        <h2 id="attachment-policy-workspace-heading" hlmCardTitle>Sửa quy tắc chứng từ {{ policy.currency }}</h2>
+        <h2 id="attachment-policy-workspace-heading" hlmCardTitle>
+          Sửa quy tắc chứng từ {{ policy.currency }}
+        </h2>
         <p hlmCardDescription>Phiếu từ ngưỡng này trở lên phải có đúng loại tài liệu.</p>
       </div>
       <div hlmCardContent class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

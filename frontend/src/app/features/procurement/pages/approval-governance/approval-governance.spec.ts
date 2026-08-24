@@ -7,15 +7,21 @@ describe('ApprovalGovernancePage', () => {
   it('shows rules and role capabilities returned by the API', async () => {
     await TestBed.configureTestingModule({
       imports: [ApprovalGovernancePage],
-      providers: [{
-        provide: ProcurementService,
-        useValue: {
-          approvalGovernance: () => of({
-            rules: [], delegations: [], delegateCandidates: [],
-            canManageRules: false, canDelegate: true,
-          }),
+      providers: [
+        {
+          provide: ProcurementService,
+          useValue: {
+            approvalGovernance: () =>
+              of({
+                rules: [],
+                delegations: [],
+                delegateCandidates: [],
+                canManageRules: false,
+                canDelegate: true,
+              }),
+          },
         },
-      }],
+      ],
     }).compileComponents();
     const fixture = TestBed.createComponent(ApprovalGovernancePage);
     fixture.detectChanges();

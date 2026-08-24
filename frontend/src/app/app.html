@@ -9,8 +9,17 @@
     ></button>
   }
 
-  <aside class="app-sidebar" [class.app-sidebar--open]="isNavigationOpen()" aria-label="Điều hướng DX-OS">
-    <a class="app-brand" routerLink="/dashboard" (click)="closeNavigation()" aria-label="DX-OS - Tổng quan">
+  <aside
+    class="app-sidebar"
+    [class.app-sidebar--open]="isNavigationOpen()"
+    aria-label="Điều hướng DX-OS"
+  >
+    <a
+      class="app-brand"
+      routerLink="/dashboard"
+      (click)="closeNavigation()"
+      aria-label="DX-OS - Tổng quan"
+    >
       <span class="app-brand__mark" aria-hidden="true">DX</span>
       <span class="min-w-0">
         <strong>DX-OS</strong>
@@ -89,7 +98,9 @@
             <span hlmBadge variant="secondary">{{ primaryRoleLabel() }}</span>
           </span>
         </div>
-        <button hlmBtn variant="outline" size="sm" type="button" (click)="logout()">Đăng xuất</button>
+        <button hlmBtn variant="outline" size="sm" type="button" (click)="logout()">
+          Đăng xuất
+        </button>
       </div>
     </header>
 

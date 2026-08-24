@@ -445,9 +445,7 @@ describe('ProcurementService', () => {
 
     const input = { title: 'Mua laptop', costCenter: 'CC-GENERAL', totalAmount: '25000000' };
     service.checkDuplicate(input).subscribe();
-    const duplicate = http.expectOne(
-      'http://api.test/api/v1/purchase-requests/duplicate-check',
-    );
+    const duplicate = http.expectOne('http://api.test/api/v1/purchase-requests/duplicate-check');
     expect(duplicate.request.method).toBe('POST');
     expect(duplicate.request.body).toEqual(input);
     duplicate.flush({ potentialDuplicate: false, items: [] });
@@ -485,7 +483,9 @@ describe('ProcurementService', () => {
     expect(create.request.headers.get('Idempotency-Key')).toBe('quote-create-0001');
     create.flush({ id: 'quote-id', version: 1 });
 
-    service.selectSupplierQuote('quote-id', 1, 1, 'Báo giá phù hợp nhất', 'quote-award-0001').subscribe();
+    service
+      .selectSupplierQuote('quote-id', 1, 1, 'Báo giá phù hợp nhất', 'quote-award-0001')
+      .subscribe();
     const select = http.expectOne('http://api.test/api/v1/sourcing/quotes/quote-id/selection');
     expect(select.request.body).toEqual({
       expectedCaseVersion: 1,

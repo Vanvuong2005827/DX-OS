@@ -1,0 +1,22 @@
+{
+  "$schema": "https://github.com/IBM/audit-ci/raw/main/docs/schema.json",
+  "high": true,
+  "package-manager": "npm",
+  "report-type": "summary",
+  "allowlist": [
+    {
+      "GHSA-w3rx-r6r6-pgpr": {
+        "active": true,
+        "expiry": "2026-10-31",
+        "notes": "Transitive image-size dependency from Docusaurus. The docs build only reads repository-owned images; no patched npm release is currently installable."
+      }
+    },
+    {
+      "GHSA-5p2g-fcmc-qvqq": {
+        "active": true,
+        "expiry": "2026-10-31",
+        "notes": "Transitive image-size dependency from Docusaurus. The docs build only reads repository-owned images; no patched npm release is currently installable."
+      }
+    }
+  ]
+}
